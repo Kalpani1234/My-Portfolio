@@ -72,6 +72,13 @@ export const CertificatesLogos = [
     {
         src: "https://cdn.worldvectorlogo.com/logos/sololearn-2.svg",
         alt: "sololearn logo",
+        title: "C Intermediate",
+        issuedBy: "SoloLearn",
+        url: "https://www.sololearn.com/en/certificates/CC-CMWRZJDZ",
+    },
+    {
+        src: "https://cdn.worldvectorlogo.com/logos/sololearn-2.svg",
+        alt: "sololearn logo",
         title: "C",
         issuedBy: "SoloLearn",
         url: "https://www.sololearn.com/en/certificates/CC-J56C5BE8",
