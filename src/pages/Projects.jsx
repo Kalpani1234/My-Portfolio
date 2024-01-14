@@ -2,7 +2,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {ProjectData} from "../data/ProjectData.jsx";
+import { ProjectData } from "../data/ProjectData.jsx";
 
 const Projects = () => {
   return (
