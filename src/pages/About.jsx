@@ -65,6 +65,28 @@ const About = () => {
                 className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white dark:before:bg-black before:ring-2 before:ring-black dark:before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
               >
                 <h4 className="text-base font-medium leading-7 text-slate-500 lg:block lg:w-28 lg:text-right">
+                  2024-02-01
+                </h4>
+                <div className="flex flex-col flex-1 gap-2">
+                  <h3 className="text-base font-medium leading-7 text-black dark:text-white">
+                    Web Developer- Intern
+                    <br />
+                    <span className="font-normal text-slate-600">
+                      CodeAlpha
+                    </span>
+                  </h3>
+                  <p className="text-slate-500">
+                    Contributing to projects and enhancing coding skills. Proven
+                    ability in problem-solving and effective collaboration in a
+                    professional environment.
+                  </p>
+                </div>
+              </li>
+              <li
+                role="article"
+                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white dark:before:bg-black before:ring-2 before:ring-black dark:before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
+              >
+                <h4 className="text-base font-medium leading-7 text-slate-500 lg:block lg:w-28 lg:text-right">
                   2024-01-01
                 </h4>
                 <div className="flex flex-col flex-1 gap-2">
@@ -80,28 +102,6 @@ const About = () => {
                     hands-on experience in web development. Contributed to
                     projects, enhancing skills in coding, problem-solving, and
                     collaboration.
-                  </p>
-                </div>
-              </li>
-              <li
-                role="article"
-                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white dark:before:bg-black before:ring-2 before:ring-black dark:before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
-              >
-                <h4 className="text-base font-medium leading-7 text-slate-500 lg:block lg:w-28 lg:text-right">
-                  2024-02-01
-                </h4>
-                <div className="flex flex-col flex-1 gap-2">
-                  <h3 className="text-base font-medium leading-7 text-black dark:text-white">
-                    Web Developer- Intern
-                    <br />
-                    <span className="font-normal text-slate-600">
-                      CodeAlpha
-                    </span>
-                  </h3>
-                  <p className="text-slate-500">
-                    Contributing to projects and enhancing coding skills. Proven
-                    ability in problem-solving and effective collaboration in a
-                    professional environment.
                   </p>
                 </div>
               </li>
