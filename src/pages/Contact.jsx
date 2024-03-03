@@ -241,7 +241,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer className="mt-auto"/>
       </div>
     </>
   );
