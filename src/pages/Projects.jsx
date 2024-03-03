@@ -54,7 +54,6 @@ const Projects = () => {
                 </div>
               ))}
             </div>
-          </div>
         </section>
         <Footer />
       </div>
