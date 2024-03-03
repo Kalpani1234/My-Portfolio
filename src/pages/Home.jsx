@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <section>
+        <section className="flex flex-col items-start justify-center flex-1"> 
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
             <div className="flex flex-col items-start pt-10">
               <h1 className="text-4xl sm:text-8xl font-bold text-black dark:text-white mb-5 sm:mb-10">
@@ -26,7 +26,7 @@ const Home = () => {
             />
           </div>
         </section>
-        <Footer />
+        <Footer className="mt-auto"/>
       </div>
     </>
   );
