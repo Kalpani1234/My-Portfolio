@@ -36,7 +36,7 @@ export const SkillsLogos = [
     alt: "bootstrap logo",
   },
   {
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
     alt: "tailwindcss logo",
   },
   {
@@ -74,6 +74,10 @@ export const SkillsLogos = [
   {
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
     alt: "figma logo",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg",
+    alt: "windows logo",
   },
   {
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
