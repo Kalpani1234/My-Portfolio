@@ -68,6 +68,7 @@ const About = () => {
                   2024-02-01
                 </h4>
                 <div className="flex flex-col flex-1 gap-2">
+                <h4 class="text-base font-medium text-slate-500">Present</h4>
                   <h3 className="text-base font-medium leading-7 text-black dark:text-white">
                     Web Developer- Intern
                     <br />
@@ -84,12 +85,13 @@ const About = () => {
               </li>
               <li
                 role="article"
-                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white dark:before:bg-black before:ring-2 before:ring-black dark:before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
+                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-black dark:before:bg-white before:ring-2 before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
               >
                 <h4 className="text-base font-medium leading-7 text-slate-500 lg:block lg:w-28 lg:text-right">
                   2024-01-01
                 </h4>
                 <div className="flex flex-col flex-1 gap-2">
+                <h4 class="text-base font-medium text-slate-500">2024-01-31</h4>
                   <h3 className="text-base font-medium leading-7 text-black dark:text-white">
                     Web Developer- Intern
                     <br />
@@ -118,7 +120,7 @@ const About = () => {
             >
               <li
                 role="article"
-                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-black dark:before:bg-white before:ring-2 before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
+                className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-white dark:before:bg-black before:ring-2 before:ring-black dark:before:ring-white lg:flex lg:gap-12 lg:pl-0 lg:before:left-[8.5rem]"
               >
                 <h4 className="text-base font-medium leading-7 text-slate-500 lg:block lg:w-28 lg:text-right">
                   2021
