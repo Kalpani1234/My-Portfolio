@@ -2,6 +2,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 import { ProjectData } from "../data/ProjectData.jsx";
+import Transition from "../components/PageTransition.jsx";
 
 const Projects = () => {
   return (
@@ -72,4 +73,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Transition(Projects);

@@ -18,8 +18,8 @@ const Header = () => {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link to="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link to="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Nethma Kalpani</span>
             <img className="h-8 w-auto dark:invert" src={Logo} alt="Brand" />
           </Link>
         </div>
@@ -38,9 +38,9 @@ const Header = () => {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
-            to="/"
+            to="/home"
             className={`text-sm font-semibold leading-6 text-gray-900 dark:text-white ${
-              lastPart === ""
+              lastPart === "home"
                 ? "rounded-none border-b-2 border-black dark:border-white"
                 : ""
             }`}
@@ -114,7 +114,7 @@ const Header = () => {
           <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">Nethma Kalpani</span>
                 <img
                   className="h-8 w-auto dark:invert"
                   src={Logo}
@@ -138,9 +138,9 @@ const Header = () => {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   <Link
-                    to="/"
+                    to="/home"
                     className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white ${
-                      lastPart === ""
+                      lastPart === "home"
                         ? "rounded-none border-b-2 border-black dark:border-white"
                         : ""
                     }`}
