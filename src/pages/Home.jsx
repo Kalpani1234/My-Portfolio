@@ -1,6 +1,7 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Transition from "../components/PageTransition.jsx";
+import {TypeAnimation} from "react-type-animation";
 
 const Home = () => {
   return (
@@ -13,7 +14,14 @@ const Home = () => {
               <h1 className="text-4xl sm:text-8xl font-bold text-black dark:text-white mb-5 sm:mb-10">
                 Hello,
                 <br />
-                I’m&nbsp;<span className="animate-pulse">Nethma Kalpani</span>
+                I’m&nbsp;
+                <TypeAnimation
+                  sequence={["Nethma Kalpani", 2000, ""]}
+                  wrapper="span"
+                  cursor={true}
+                  repeat={Infinity}
+                  className="animate-pulse"
+                />
               </h1>
               <h1 className="text-xl sm:text-3xl font-bold text-black dark:text-white mb-5 sm:mb-10">
                 Software Engineer
