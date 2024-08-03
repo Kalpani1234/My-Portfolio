@@ -9,7 +9,7 @@ export const ProjectData = [
   {
     title: "Wildlife-Circle USJP",
     description:
-      "A dynamic web application developed for the Wildlife Circle at the University of Sri Jayewardenepura. Wildlife Circle offers a comprehensive platform with features that enhance user experience and provide robust administrative tools.",
+      "The Wildlife-Circle USJP is a dynamic web application developed for the Wildlife Circle at the University of Sri Jayewardenepura. The application provides a range of features including user authentication, product and order management, blog viewing, a gallery, and a unique 3D forest view.",
     tags: [
       "ReactJS",
       "HTML5",
@@ -19,7 +19,7 @@ export const ProjectData = [
       "Laravel",
       "MySQL"
     ],
-    link: "https://github.com/Kalpani1234/InfinitraX",
+    link: "https://github.com/Kalpani1234/wildlfe-circle-frontend",
     img: Wildlife,
   },
   {
@@ -48,9 +48,9 @@ export const ProjectData = [
     img: Infinitrax,
   },
   {
-    title: "Railway Management System",
+    title: "SLRMS",
     description:
-      "For our 2nd-year 2nd-semester project, we've developed a system to automate a myriad of operations within the railway network service of Sri Lanka. It will improving efficiency through automated processes for timetables, ticketing, route information, and passenger management, addressing traditional inefficiencies.",
+      "SLRMS is a comprehensive Railway Management System developed for Sri Lanka Railways. This system streamlines various operations including ticket booking, scheduling, and managing train routes. SLRMS offers a user-friendly interface and robust backend to ensure efficient management and smooth operation of railway services.",
     tags: [
       "HTML5",
       "CSS3",
