@@ -14,14 +14,14 @@ export const CertificatesLogos = [
     url: "https://open.uom.lk/lms/mod/customcert/view.php?id=675&downloadown=1",
   },
   {
-    src: "https://media.licdn.com/dms/image/C4D0BAQF4Jo3PxJpuVw/company-logo_100_100/0/1631307772357?e=1718841600&v=beta&t=cU4CDb6bZjkX7-TLxUYp2dCcVq1WWJpanyxMgAtypok",
+    src: "https://upload.wikimedia.org/wikipedia/en/6/60/University_of_Moratuwa_logo.png",
     alt: "uom logo",
     title: "Python for Beginners",
     issuedBy: "University of Moratuwa",
     url: "#",
   },
   {
-    src: "https://media.licdn.com/dms/image/C4D0BAQF4Jo3PxJpuVw/company-logo_100_100/0/1631307772357?e=1718841600&v=beta&t=cU4CDb6bZjkX7-TLxUYp2dCcVq1WWJpanyxMgAtypok",
+    src: "https://upload.wikimedia.org/wikipedia/en/6/60/University_of_Moratuwa_logo.png",
     alt: "uom logo",
     title: "Web Design for Beginners",
     issuedBy: "University of Moratuwa",

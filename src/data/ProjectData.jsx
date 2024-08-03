@@ -1,10 +1,27 @@
 import Portfolio from "../assets/projects-portfolio.png";
+import Wildlife from "../assets/projects-wildlife.png";
 import Infinitrax from "../assets/projects-infinitrax.png";
 import Railway from "../assets/projects-railway.png";
 import Spicy from "../assets/projects-spicy.png";
 import Quizzard from "../assets/projects-quizzard.png";
 
 export const ProjectData = [
+  {
+    title: "Wildlife-Circle USJP",
+    description:
+      "A dynamic web application developed for the Wildlife Circle at the University of Sri Jayewardenepura. Wildlife Circle offers a comprehensive platform with features that enhance user experience and provide robust administrative tools.",
+    tags: [
+      "ReactJS",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TailwindCSS",
+      "Laravel",
+      "MySQL"
+    ],
+    link: "https://github.com/Kalpani1234/InfinitraX",
+    img: Wildlife,
+  },
   {
     title: "Portfolio",
     description:
