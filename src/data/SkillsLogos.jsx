@@ -32,6 +32,10 @@ export const SkillsLogos = [
     alt: "python logo",
   },
   {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/latex/latex-original.svg",
+    alt: "latex logo",
+  },
+  {
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
     alt: "bootstrap logo",
   },
