@@ -116,7 +116,7 @@ function PublicationDialog({
   date,
   children,
 }: {
-  doi: string;
+  doi?: string;
   title: string;
   abstract?: string;
   authors?: string[];
@@ -131,7 +131,7 @@ function PublicationDialog({
   const [error, setError] = useState<string | null>(null);
 
   const fetchPublicationData = async () => {
-    if (data) return; // Already loaded
+    if (data || !doi) return; // Already loaded or no DOI to fetch
 
     setLoading(true);
     setError(null);
@@ -242,18 +242,20 @@ function PublicationDialog({
                   </span>
                 </div>
               )}
-              <div className="flex items-start gap-2">
-                <span className="text-sm font-medium min-w-25">DOI:</span>
-                <a
-                  href={`https://doi.org/${doi}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline flex items-center gap-1"
-                >
-                  {doi}
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
+              {doi && (
+                <div className="flex items-start gap-2">
+                  <span className="text-sm font-medium min-w-25">DOI:</span>
+                  <a
+                    href={`https://doi.org/${doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline flex items-center gap-1"
+                  >
+                    {doi}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )}
               {data && typeof data.cited_by_count === 'number' && (
                 <div className="flex items-start gap-2">
                   <span className="text-sm font-medium min-w-25">
@@ -418,7 +420,7 @@ const abstractConferences = [
       'Modern intrusion detection systems (IDS) are increasingly challenged by the complexity of contemporary cyberattacks, which often unfold in multiple stages and leverage relationships between various network entities. Traditional IDS approaches, which rely on flat, tabular data representations, struggle to capture the behavioural context and temporal sequences vital for detecting such sophisticated threats. This limitation persists even when using rich public datasets like CSE-CIC-IDS2018, CIC-IDS2017, and CIC-DDoS2019, as existing tools typically convert these datasets into basic graph structures without modelling the nuanced interactions or attack progressions that occur over time. To address this critical gap, our research introduces a behaviour-aware graph modelling framework for intrusion detection, utilising Neo4j to transform IDS data into semantically enriched property graphs. Our methodology captures not only static connections between entities such as IP addresses, ports, and protocols, but also behavioural features within graph relationships. By developing custom Cypher  queries and behaviour-driven graph traversal techniques, the system enables the identification of complex, multi-stage attack patterns that are often missed by conventional detection methods. An interactive web interface further enhances analyst engagement, supporting intuitive visualisation and exploration of attack  pathways. This approach significantly advances the state of intrusion detection by improving both detection accuracy and interpretability, while offering a modular and extensible schema that can be adapted to additional datasets and real-time monitoring. Ultimately, our work bridges the gap between raw network logs and actionable behavioural analysis, providing a scalable and explainable solution that empowers analysts to understand, trace, and respond to advanced cyber threats as they evolve.',
     authors: ['Nethma Kalpani', 'Nureka Rodrigo'],
     conference: '14th Annual International Research Conference (AiRC2025)',
-    date: '2025',
+    date: '2025-06-18',
   },
   {
     id: 2,
@@ -428,7 +430,7 @@ const abstractConferences = [
       'The rapid digital transformation associated with Industry 4.0 has fundamentally reshaped industrial operations by integrating cyber-physical systems, the Industrial Internet of Things (IIoT), and edge computing, thereby enhancing efficiency while simultaneously introducing unprecedented cybersecurity challenges. This systematic literature review aims to provide a comprehensive  synthesis of recent advances in artificial intelligence (AI) driven intrusion  detection systems (IDS) specifically tailored for Industry 4.0 environments. The primary objective is to identify and critically evaluate state of the art AI-based IDS approaches, assess their effectiveness in addressing the unique security demands of interconnected industrial systems, and highlight prevailing gaps and  future research directions. Employing the PRISMA methodology, the study systematically filtered an initial corpus of over 8,000 records to 22 high-quality  articles published between 2020 and 2025, ensuring rigour and transparency. The analysis reveals key trends, including the increasing adoption of edge-enabled  detection methods, the integration of explainable AI (XAI) to enhance trust and transparency, and the implementation of privacy-preserving techniques such as federated learning. Despite these advancements, the review identifies persistent  challenges, notably the reliance on synthetic or outdated datasets, resource  constraints at the edge, and limited validation in real-world industrial settings, all of which impede the practical deployment of current solutions. The findings offer a holistic perspective on the strengths and limitations of contemporary AI-driven IDS, providing actionable insights for researchers and practitioners striving to develop robust, adaptive, and scalable security frameworks for modern industrial networks. In conclusion, this review not only maps the current landscape of AI-based intrusion detection in Industry 4.0 but also outlines critical challenges and  future directions. This serves as a valuable resource to guide the development of next-generation IDS capable of meeting the stringent demands of industrial cybersecurity',
     authors: ['Nethma Kalpani', 'Nureka Rodrigo'],
     conference: '14th Annual International Research Conference (AiRC2025)',
-    date: '2025',
+    date: '2025-06-18',
   },
 ];
 
@@ -666,6 +668,19 @@ export default function PublicationsPage() {
                           </p>
                         </div>
                       )}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        <PublicationDialog
+                          title={pub.title}
+                          abstract={pub.abstract}
+                          authors={pub.authors}
+                          conference={pub.conference}
+                          date={pub.date}
+                        >
+                          <Button variant="outline" size="sm">
+                            Additional Details
+                          </Button>
+                        </PublicationDialog>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
