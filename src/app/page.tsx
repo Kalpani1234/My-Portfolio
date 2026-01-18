@@ -13,6 +13,38 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaOrcid } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const socialVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const socialItemVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+};
 
 export default function Home() {
   const { theme } = useTheme();
@@ -43,8 +75,13 @@ export default function Home() {
             color={color}
             refresh
           />
-          <div className="relative z-10 flex flex-col items-center gap-12 max-w-4xl mx-auto">
-            <div className="shrink-0">
+          <motion.div
+            className="relative z-10 flex flex-col items-center gap-12 max-w-4xl mx-auto"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="shrink-0" variants={itemVariants}>
               <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <Image
                   src="/nethma.jpg"
@@ -54,8 +91,8 @@ export default function Home() {
                   priority
                 />
               </div>
-            </div>
-            <div className="flex-1 text-center">
+            </motion.div>
+            <motion.div className="flex-1 text-center" variants={itemVariants}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                 Nethma Kalpani
               </h1>
@@ -66,7 +103,10 @@ export default function Home() {
                 A passionate computer science enthusiast with a strong
                 commitment to continuous academic growth and research.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
+              <motion.div
+                className="flex flex-wrap gap-4 justify-center"
+                variants={itemVariants}
+              >
                 <Link href="mailto:kalpani4lk@gmail.com" target="_blank">
                   <Button size="lg" className="gap-2 cursor-pointer">
                     <Mail className="w-4 h-4" />
@@ -82,65 +122,76 @@ export default function Home() {
                   <FileText className="w-4 h-4" />
                   Download CV
                 </Button>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </section>
 
-        <section className="container mx-auto p-4 flex items-center justify-center gap-4">
-          <Link
+        <motion.section
+          className="container mx-auto p-4 flex items-center justify-center gap-4"
+          initial="hidden"
+          animate="visible"
+          variants={socialVariants}
+        >
+          <motion.a
             href="https://github.com/kalpani1234"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="GitHub"
+            variants={socialItemVariants}
           >
             <FaGithub className="w-5 h-5" />
-          </Link>
-          <Link
+          </motion.a>
+          <motion.a
             href="https://orcid.org/0009-0000-0233-9962"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="ORCID"
+            variants={socialItemVariants}
           >
             <FaOrcid className="w-5 h-5" />
-          </Link>
-          <Link
+          </motion.a>
+          <motion.a
             href="https://researchgate.net/profile/Nethma-Kalpani"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="ResearchGate"
+            variants={socialItemVariants}
           >
             <FaResearchgate className="w-5 h-5" />
-          </Link>
-          <Link
+          </motion.a>
+          <motion.a
             href="https://scholar.google.com/citations?user=qJwoILoAAAAJ&hl=en"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="Google Scholar"
+            variants={socialItemVariants}
           >
             <FaGoogleScholar className="w-5 h-5" />
-          </Link>
-          <Link
+          </motion.a>
+          <motion.a
             href="https://linkedin.com/in/nethma-kalpani"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="LinkedIn"
+            variants={socialItemVariants}
           >
             <FaLinkedin className="w-5 h-5" />
-          </Link>
-          <Link
+          </motion.a>
+          <motion.a
             href="mailto:kalpani4lk@gmail.com"
             className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors border border-zinc-200 dark:border-zinc-800"
             aria-label="Email"
+            variants={socialItemVariants}
           >
             <Mail className="w-5 h-5" />
-          </Link>
-        </section>
+          </motion.a>
+        </motion.section>
 
         {/* Footer */}
         <Footer />

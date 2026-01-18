@@ -30,6 +30,27 @@ import {
   Globe,
 } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.3 } },
+};
+
+const cardContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
 
 // Type definitions for OpenAlex API response
 interface OpenAlexData {
@@ -431,9 +452,14 @@ export default function PublicationsPage() {
           color={color}
           refresh
         />
-        <div className="relative z-10 container mx-auto px-4 max-w-6xl">
+        <motion.div
+          className="relative z-10 container mx-auto px-4 max-w-6xl"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           {/* Journal Publications Section */}
-          <section className="mb-16">
+          <motion.section className="mb-16" variants={sectionVariants}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-primary/10">
                 <BookOpen className="w-6 h-6 text-primary" />
@@ -444,79 +470,78 @@ export default function PublicationsPage() {
             </div>
             <div className="space-y-4">
               {journalPublications.map((pub) => (
-                <Card
-                  key={pub.id}
-                  className="hover:shadow-lg transition-shadow"
-                >
-                  <CardContent className="px-6">
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">
-                      {pub.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <Users className="w-4 h-4 inline mr-1" />
-                      {Array.isArray(pub.authors)
-                        ? pub.authors.join(', ')
-                        : pub.authors}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <BookOpen className="w-4 h-4 inline mr-1" />
-                      {pub.journal}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <Building className="w-4 h-4 inline mr-1" />
-                      {pub.publisher}
-                    </p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-3">
-                      <span>
-                        <Calendar className="w-4 h-4 inline mr-1" />
-                        {pub.date}
-                      </span>
-                    </div>
-                    {pub.abstract && (
-                      <div className="mb-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
-                          {pub.abstract}
-                        </p>
+                <motion.div key={pub.id} variants={cardVariants}>
+                  <Card className="hover:shadow-lg transition-shadow">
+                    <CardContent className="px-6">
+                      <h3 className="text-xl font-semibold mb-3 text-foreground">
+                        {pub.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <Users className="w-4 h-4 inline mr-1" />
+                        {Array.isArray(pub.authors)
+                          ? pub.authors.join(', ')
+                          : pub.authors}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <BookOpen className="w-4 h-4 inline mr-1" />
+                        {pub.journal}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <Building className="w-4 h-4 inline mr-1" />
+                        {pub.publisher}
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-3">
+                        <span>
+                          <Calendar className="w-4 h-4 inline mr-1" />
+                          {pub.date}
+                        </span>
                       </div>
-                    )}
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {pub.doi && (
-                        <>
-                          <PublicationDialog
-                            doi={pub.doi}
-                            title={pub.title}
-                            abstract={pub.abstract}
-                            authors={pub.authors}
-                            journal={pub.journal}
-                            publisher={pub.publisher}
-                            date={pub.date}
-                          >
-                            <Button variant="outline" size="sm">
-                              Additional Details
-                            </Button>
-                          </PublicationDialog>
-                          <Button variant="default" size="sm" asChild>
-                            <Link
-                              href={`https://doi.org/${pub.doi}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              Read the Paper
-                            </Link>
-                          </Button>
-                        </>
+                      {pub.abstract && (
+                        <div className="mb-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
+                            {pub.abstract}
+                          </p>
+                        </div>
                       )}
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {pub.doi && (
+                          <>
+                            <PublicationDialog
+                              doi={pub.doi}
+                              title={pub.title}
+                              abstract={pub.abstract}
+                              authors={pub.authors}
+                              journal={pub.journal}
+                              publisher={pub.publisher}
+                              date={pub.date}
+                            >
+                              <Button variant="outline" size="sm">
+                                Additional Details
+                              </Button>
+                            </PublicationDialog>
+                            <Button variant="default" size="sm" asChild>
+                              <Link
+                                href={`https://doi.org/${pub.doi}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                                Read the Paper
+                              </Link>
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Full Paper Conference Publications Section */}
-          <section className="mb-16">
+          <motion.section className="mb-16" variants={sectionVariants}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-primary/10">
                 <FileText className="w-6 h-6 text-primary" />
@@ -525,81 +550,80 @@ export default function PublicationsPage() {
                 Full Paper Conference Publications
               </h2>
             </div>
-            <div className="space-y-4">
+            <motion.div className="space-y-4" variants={cardContainerVariants}>
               {fullPaperConferences.map((pub) => (
-                <Card
-                  key={pub.id}
-                  className="hover:shadow-lg transition-shadow"
-                >
-                  <CardContent className="px-6">
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">
-                      {pub.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <Users className="w-4 h-4 inline mr-1" />
-                      {Array.isArray(pub.authors)
-                        ? pub.authors.join(', ')
-                        : pub.authors}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <MapPin className="w-4 h-4 inline mr-1" />
-                      {pub.conference}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <Building className="w-4 h-4 inline mr-1" />
-                      {pub.publisher}
-                    </p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-3">
-                      <span>
-                        <Calendar className="w-4 h-4 inline mr-1" />
-                        {pub.date}
-                      </span>
-                    </div>
-                    {pub.abstract && (
-                      <div className="mb-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
-                          {pub.abstract}
-                        </p>
+                <motion.div key={pub.id} variants={cardVariants}>
+                  <Card className="hover:shadow-lg transition-shadow">
+                    <CardContent className="px-6">
+                      <h3 className="text-xl font-semibold mb-3 text-foreground">
+                        {pub.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <Users className="w-4 h-4 inline mr-1" />
+                        {Array.isArray(pub.authors)
+                          ? pub.authors.join(', ')
+                          : pub.authors}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <MapPin className="w-4 h-4 inline mr-1" />
+                        {pub.conference}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <Building className="w-4 h-4 inline mr-1" />
+                        {pub.publisher}
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mb-3">
+                        <span>
+                          <Calendar className="w-4 h-4 inline mr-1" />
+                          {pub.date}
+                        </span>
                       </div>
-                    )}
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {pub.doi && (
-                        <>
-                          <PublicationDialog
-                            doi={pub.doi}
-                            title={pub.title}
-                            abstract={pub.abstract}
-                            authors={pub.authors}
-                            conference={pub.conference}
-                            publisher={pub.publisher}
-                            date={pub.date}
-                          >
-                            <Button variant="outline" size="sm">
-                              Additional Details
-                            </Button>
-                          </PublicationDialog>
-                          <Button variant="default" size="sm" asChild>
-                            <Link
-                              href={`https://doi.org/${pub.doi}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              Read the Paper
-                            </Link>
-                          </Button>
-                        </>
+                      {pub.abstract && (
+                        <div className="mb-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
+                            {pub.abstract}
+                          </p>
+                        </div>
                       )}
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {pub.doi && (
+                          <>
+                            <PublicationDialog
+                              doi={pub.doi}
+                              title={pub.title}
+                              abstract={pub.abstract}
+                              authors={pub.authors}
+                              conference={pub.conference}
+                              publisher={pub.publisher}
+                              date={pub.date}
+                            >
+                              <Button variant="outline" size="sm">
+                                Additional Details
+                              </Button>
+                            </PublicationDialog>
+                            <Button variant="default" size="sm" asChild>
+                              <Link
+                                href={`https://doi.org/${pub.doi}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                                Read the Paper
+                              </Link>
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
-          </section>
+            </motion.div>
+          </motion.section>
 
           {/* Abstract Conference Publications Section */}
-          <section>
+          <motion.section variants={sectionVariants}>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-primary/10">
                 <ScrollText className="w-6 h-6 text-primary" />
@@ -608,48 +632,50 @@ export default function PublicationsPage() {
                 Abstract Conference Publications
               </h2>
             </div>
-            <div className="space-y-4">
+            <motion.div className="space-y-4" variants={cardContainerVariants}>
               {abstractConferences.map((pub) => (
-                <Card
-                  key={pub.id}
-                  className="hover:shadow-lg transition-shadow"
-                >
-                  <CardContent className="px-6">
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">
-                      {pub.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <Users className="w-4 h-4 inline mr-1" />
-                      {Array.isArray(pub.authors)
-                        ? pub.authors.join(', ')
-                        : pub.authors}
-                    </p>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      <MapPin className="w-4 h-4 inline mr-1" />
-                      {pub.conference}
-                    </p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
-                      <span>
-                        <Calendar className="w-4 h-4 inline mr-1" />
-                        {pub.date}
-                      </span>
-                    </div>
-                    {pub.abstract && (
-                      <div className="mt-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
-                          {pub.abstract}
-                        </p>
+                <motion.div key={pub.id} variants={cardVariants}>
+                  <Card
+                    key={pub.id}
+                    className="hover:shadow-lg transition-shadow"
+                  >
+                    <CardContent className="px-6">
+                      <h3 className="text-xl font-semibold mb-3 text-foreground">
+                        {pub.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <Users className="w-4 h-4 inline mr-1" />
+                        {Array.isArray(pub.authors)
+                          ? pub.authors.join(', ')
+                          : pub.authors}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        <MapPin className="w-4 h-4 inline mr-1" />
+                        {pub.conference}
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                        <span>
+                          <Calendar className="w-4 h-4 inline mr-1" />
+                          {pub.date}
+                        </span>
                       </div>
-                    )}
-                  </CardContent>
-                </Card>
+                      {pub.abstract && (
+                        <div className="mt-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed text-justify line-clamp-3">
+                            {pub.abstract}
+                          </p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
-          </section>
+            </motion.div>
+          </motion.section>
 
           {/* Footer */}
           <Footer />
-        </div>
+        </motion.div>
       </main>
     </>
   );

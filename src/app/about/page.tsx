@@ -19,6 +19,7 @@ import {
   MapPin,
   User,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 // Data objects
 const biography = {
@@ -111,6 +112,36 @@ const experience = [
   },
 ];
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.3 } },
+};
+
+const cardContainerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
+
+const timelineVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const timelineItemVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+};
+
 export default function About() {
   const { theme } = useTheme();
   const [color, setColor] = useState('#ffffff');
@@ -131,9 +162,17 @@ export default function About() {
           color={color}
           refresh
         />
-        <div className="relative z-10">
+        <motion.div
+          className="relative z-10"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           {/* Biography */}
-          <section className="container mx-auto px-4 pt-24 md:pt-32">
+          <motion.section
+            className="container mx-auto px-4 pt-24 md:pt-32"
+            variants={sectionVariants}
+          >
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-8 flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-primary/10">
@@ -152,10 +191,10 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Research Interests */}
-          <section className="w-full">
+          <motion.section className="w-full" variants={sectionVariants}>
             <div className="container mx-auto px-4 py-16 pb-0">
               <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 flex items-center gap-3">
@@ -164,33 +203,38 @@ export default function About() {
                   </div>
                   Research Interests
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  variants={cardContainerVariants}
+                >
                   {researchInterests.map((interest, index) => {
                     return (
-                      <Card
-                        key={index}
-                        className="hover:shadow-lg transition-all hover:-translate-y-1"
-                      >
-                        <CardHeader>
-                          <CardTitle className="flex items-center gap-2">
-                            {interest.title}
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-muted-foreground">
-                            {interest.description}
-                          </p>
-                        </CardContent>
-                      </Card>
+                      <motion.div key={index} variants={cardVariants}>
+                        <Card className="hover:shadow-lg transition-all hover:-translate-y-1">
+                          <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                              {interest.title}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-muted-foreground">
+                              {interest.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Education Timeline */}
-          <section className="container mx-auto px-4 py-16 pb-0">
+          <motion.section
+            className="container mx-auto px-4 py-16 pb-0"
+            variants={sectionVariants}
+          >
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-primary/10">
@@ -202,9 +246,13 @@ export default function About() {
                 {/* Timeline line */}
                 <div className="absolute left-0 md:left-8 top-0 bottom-0 w-0.5 bg-border"></div>
 
-                <div className="space-y-12">
+                <motion.div className="space-y-12" variants={timelineVariants}>
                   {education.map((edu, index) => (
-                    <div key={index} className="relative pl-8 md:pl-20">
+                    <motion.div
+                      key={index}
+                      className="relative pl-8 md:pl-20"
+                      variants={timelineItemVariants}
+                    >
                       {/* Timeline dot */}
                       <div className="absolute left-0 md:left-8 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background"></div>
 
@@ -239,15 +287,15 @@ export default function About() {
                           </div>
                         </CardContent>
                       </Card>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Experience Timeline */}
-          <section className="w-full">
+          <motion.section className="w-full" variants={sectionVariants}>
             <div className="container mx-auto px-4 pt-16">
               <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
@@ -260,9 +308,16 @@ export default function About() {
                   {/* Timeline line */}
                   <div className="absolute left-0 md:left-8 top-0 bottom-0 w-0.5 bg-border"></div>
 
-                  <div className="space-y-12">
+                  <motion.div
+                    className="space-y-12"
+                    variants={timelineVariants}
+                  >
                     {experience.map((exp, index) => (
-                      <div key={index} className="relative pl-8 md:pl-20">
+                      <motion.div
+                        key={index}
+                        className="relative pl-8 md:pl-20"
+                        variants={timelineItemVariants}
+                      >
                         {/* Timeline dot */}
                         <div className="absolute left-0 md:left-8 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background"></div>
 
@@ -301,17 +356,17 @@ export default function About() {
                             </div>
                           </CardContent>
                         </Card>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Footer */}
           <Footer />
-        </div>
+        </motion.div>
       </main>
     </>
   );
