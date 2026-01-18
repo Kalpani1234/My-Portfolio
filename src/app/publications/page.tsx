@@ -159,7 +159,7 @@ function PublicationDialog({
       <DialogTrigger asChild onClick={fetchPublicationData}>
         {children}
       </DialogTrigger>
-      <DialogContent className="max-w-[40vw]! w-full max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-full sm:w-[90%]! sm:max-w-[90vw]! lg:w-[40%]! lg:max-w-[40vw]! max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold pr-8">{title}</DialogTitle>
           <DialogDescription className="sr-only">
